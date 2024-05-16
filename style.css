@@ -12,7 +12,7 @@ body{
     color var (--branco);
 }
 
-conteudo-principal{
+.conteudo-principal{
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -21,12 +21,28 @@ conteudo-principal{
     width: 100%;
     margin:0 auto;
 }
-titulo-principal{
+.titulo-principal{
     text-align: left;
     width: 100%;
-    foxt-sige: 32px;
+    font-size: 32px;
     
 }
+
+.botao{
+    background-color: var(--botao-inativo);
+    display:flex;
+    justify-content: center;
+    padding:1em;
+    font-size:18px;
+    align-items: center;
+    width: 100%;
+    border-bottom: 4px solid var(--botao-ativo);
+    border-left: 2px solid var(--botao-ativo);
+    border-right: 2px solid var(--botao-ativo);
+    border-top: none;
+}
+
+
 .aba-textos{
     background-color: var(--texto-fundo);
     padding: 40px;
