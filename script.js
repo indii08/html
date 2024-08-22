@@ -1,39 +1,87 @@
-const caixaPrincipal = document.querySelector(".caixa-principal");
+const caixaPrincipal = document.querySelector(".caixa-principal");  
+const caixaPerguntas = document.querySelector(".caixa-perguntas");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
+const caixaResultado = document.querySelector(".caixa-resultado");
+const textoResultado = document.querySelector(".texto-resultado");
+const perguntas = [
     
-    const caixaPerguntas = document.querySelector(".caixa-perguntas");
-    
-    const caixaAlternativas = document.querySelector(".caixa-alternativas");
-    
-    const caixaResultado = document.querySelector(".caixa-alternativas");
-    
-    const textoResultado = document.querySelector(".texto-resultado");
-    
-    const perguntas = [
     {
-    enunciado: "Pergunta 1",
-    alternativas: ["Alternativa 1”, “Alternativa 2"],
+            enunciado:  "Assim que saiu da escola, você se depara com uma nova tecnologia: um chat que consegue responder a todas as dúvidas que uma pessoa pode ter. Além disso, o chat também gera imagens e áudios hiper-realistas. Qual o seu primeiro pensamento?",   
+            alternativas: [
+            {
+            texto: "Alternativa 1",
+            afirmação: "Isso é assustador!"
+            },
+            {
+            texto: "Alternativa 2",
+            afirmação: "Isso é maravilhoso!"
+            }
+            ]
     },
     {
-    enunciado: "Pergunta 2",
-    alternativas: ["Alternativa 1”, “Alternativa 2"],
+            enunciado: "Insira o enunciado da Pergunta 2",
+            alternativas: [
+            {
+            texto: "Alternativa 1",
+            afirmação: "Afirmação da alternativa 1"
+            },
+            {
+            texto: "Alternativa 2",
+            afirmação: "Afirmação da alternativa 2"
+            }
+            ]
     },
-    ];
-    let atual = 0;
-let perguntaAtual;[
-    function mostraPergunta() {
-        perguntaAtual = perguntas[atual];
-    }
-    const caixaPerguntas = document.querySelector(".caixa-perguntas");
+    {
+            enunciado: "Insira o enunciado da Pergunta 3",
+            alternativas: [
+            {
+            texto: "Alternativa 1",
+            afirmação: "Afirmação da alternativa 1"
+            },
+            {
+            texto: "Alternativa 2",
+            afirmação: "Afirmação da alternativa 2"
+            }
+            ]
+            }
+];
+
+let atual = 0;
+let perguntaAtual; 
+let historiaFinal = ""; 
+ 
 function mostraPergunta() {
-    perguntaAtual = perguntas[atual];
-    caixaPerguntas.textContent =
-    }
-    perguntas[atual]
-perguntaAtual = perguntas[atual];
-function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+        }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
+    }
+    function mostraAlternativa() {
+        for (const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document. createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () =>
+      respostaSelecionada(alternativa));
+        mostraPergunta();
+            };
+        caixaAlternativas.appendChild(botaoAlternativas);
+        }
+        
+
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmação;
+    historiaFinal += afirmacoes + "";
+    atual++;
+    mostraPergunta();
     }
     mostraPergunta();
 
-]
+    function mostraResultado() {
+        caixaPerguntas.textContent = "Em 2049...";
+        textoResultado.textContent = historiaFinal;
+        caixaAlternativas.textContent = "";
+        }
