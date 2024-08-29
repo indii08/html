@@ -9,12 +9,20 @@ const perguntas = [
             enunciado:  "Assim que saiu da escola, você se depara com uma nova tecnologia: um chat que consegue responder a todas as dúvidas que uma pessoa pode ter. Além disso, o chat também gera imagens e áudios hiper-realistas. Qual o seu primeiro pensamento?",   
             alternativas: [
             {
-            texto: "Alternativa 1",
-            afirmação: "Isso é assustador!"
+            texto: "Isso é assustador!",
+            afirmação: [
+                "No início, ficou com medo do que essa tecnologia pode fazer",
+                
+                "Achou assustador pensar na velocidade com que a tecnologia está avançando."
+                
+                ]
             },
             {
-            texto: "Alternativa 2",
-            afirmação: "Isso é maravilhoso!"
+            texto: "Isso é maravilhoso!",
+            afirmação: [
+                "Quis saber como usar IA no seu dia a dia.",
+                "Pensou que IA pode ajudar em tarefas da sua vida."
+            ]
             }
             ]
     },
@@ -85,3 +93,10 @@ function respostaSelecionada(opcaoSelecionada) {
         textoResultado.textContent = historiaFinal;
         caixaAlternativas.textContent = "";
         }
+
+        function respostaSelecionada(opcaoSelecionada){
+            const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
+            historiaFinal += afirmacoes + " " ;
+            atual++;
+            mostraPergunta();
+            }
